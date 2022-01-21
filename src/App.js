@@ -1,25 +1,32 @@
-import logo from './logo.svg';
 import './App.css';
+import React, { useState } from 'react';
+import { ToastManager } from './components/Toast';
 
-function App() {
+const App = () => {
+  const [toast, setToast] = useState(false);
+  const message = {
+    title: 'Bootstrap 5 React Examples',
+    content: 'no jquery, no reactstrap, no react-bootstrap'
+  }
+
+  const anyAction = () => setToast(true);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container py-4">
+      <h3>Bootstrap 5 React Examples</h3>
+      <h6>no jquery, no reactstrap, no react-bootstrap</h6>
+
+      <button className="btn btn-success" onClick={anyAction}>
+        Toast
+      </button>
+
+      <div>
+        <ToastManager position="bottom-left" type="info" autoHide={true} setToast={setToast} isVisible={toast} message={message} />
+      </div>
+
     </div>
-  );
+  )
+
 }
 
 export default App;
